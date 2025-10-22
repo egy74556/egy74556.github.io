@@ -12,9 +12,9 @@ html {
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'SUIT', sans-serif;
   line-height: 1.6;
-  color: #1a1a1a;
+  background: linear-gradient(#000 0%, #373737 );
   overflow-x: hidden;
 }
 
@@ -24,11 +24,12 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
   padding: 1rem 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.8s ease;
 }
 
 .nav-container {
@@ -38,12 +39,14 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: rgba(1, 1, 1, 1);
+
 }
 
 .nav-logo span {
   font-size: 2rem;
   font-weight: 400;
-  color: #1a1a1a;
+  color: #fff;
 }
 
 .nav-menu {
@@ -53,7 +56,7 @@ body {
 
 .nav-link {
   text-decoration: none;
-  color: #666;
+  color: #fff;
   font-weight: 400;
   transition: color 0.3s ease;
   position: relative;
@@ -69,7 +72,7 @@ body {
   display: flex;
   align-items: center;
   padding: 8rem 0 4rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: #fff;
 }
 
 .hero-container {
@@ -103,12 +106,33 @@ body {
   color: #666;
 }
 
-.status-dot {
-  width: 8px;
-  height: 8px;
-  background: #22c55e;
-  border-radius: 50%;
-  animation: pulse 2s infinite;
+.hero-title {
+  font-size: 100px;
+  font-weight: 700;
+  color: #000;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.hanja {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 8px; /* 한자 간 간격 */
+}
+
+.hanja::first-line,
+.hanja > :not(.hanja-meaning) {
+  font-size: 48px;
+  color: #000;
+}
+
+.hanja-meaning {
+  font-size: 18px;       /* 크기 줄이기 */
+  color: #939598;        /* 요청한 색상 적용 */
+  margin-top: 2px;       /* 한자와의 간격 */
+  display: block;        /* 아래쪽에 줄바꿈 형태로 정렬 */
+  text-align: center;
 }
 
 @keyframes pulse {
@@ -424,19 +448,28 @@ body {
 
 .mockup-container {
   position: relative;
-  width: 100%; /* 혹은 원하시는 크기로 지정해주세요 */
+  width: 100%;
+  /* 혹은 원하시는 크기로 지정해주세요 */
 }
 
 .mockup-video {
-    position: absolute;
-    top: 50%; /* 수직 중앙 정렬 */
-    left: 50%; /* 수평 중앙 정렬 */
-    transform: translate(-50%, -50%); /* 정중앙으로 위치 보정 */
-    width: 88.5%; /* 휴대폰 화면 너비에 맞게 조절 */
-    height: 96%; /* 휴대폰 화면 높이에 맞게 조절 */
-    border-radius: 40px; /* 화면의 둥근 모서리 표현 */
-    object-fit: cover; /* 영상이 비율을 유지하며 꽉 차도록 */
-    overflow: hidden; /* 둥근 모서리 밖으로 영상이 나가지 않도록 */
+  position: absolute;
+  top: 50%;
+  /* 수직 중앙 정렬 */
+  left: 50%;
+  /* 수평 중앙 정렬 */
+  transform: translate(-50%, -50%);
+  /* 정중앙으로 위치 보정 */
+  width: 88.5%;
+  /* 휴대폰 화면 너비에 맞게 조절 */
+  height: 96%;
+  /* 휴대폰 화면 높이에 맞게 조절 */
+  border-radius: 40px;
+  /* 화면의 둥근 모서리 표현 */
+  object-fit: cover;
+  /* 영상이 비율을 유지하며 꽉 차도록 */
+  overflow: hidden;
+  /* 둥근 모서리 밖으로 영상이 나가지 않도록 */
 }
 
 /* mockup-frame의 z-index도 수정해주면 좋아요! 
@@ -446,19 +479,20 @@ body {
   width: 100%;
   height: auto;
   display: block;
-  position: relative; 
-  z-index: 1; /* z-index 값을 1로 명확하게 설정 */
+  position: relative;
+  z-index: 1;
+  /* z-index 값을 1로 명확하게 설정 */
 }
 
 .mockup-video__content {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  
+
 }
 
 .detail-image img {
-  width: 200%;
+  width: 100%;
   height: auto;
   position: relative;
 }
