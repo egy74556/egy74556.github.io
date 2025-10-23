@@ -12,7 +12,7 @@ html {
 body {
   font-family: "SUIT", sans-serif;
   line-height: 1.6;
-  background: linear-gradient(#000 0%, #adadad 100%);
+  background: linear-gradient(#000 0%, #fff 100%);
   overflow-x: hidden;
 }
 
@@ -67,9 +67,8 @@ body {
 .hero {
   min-height: 100vh;
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 8rem 0 4rem;
-  /*   background: #fff; */
 }
 
 .hero-container {
@@ -94,6 +93,10 @@ body {
   color: #1a1a1a;
 }
 
+.hero-text {
+  text-align: center;
+}
+
 .hero-status {
   display: flex;
   align-items: center;
@@ -104,45 +107,101 @@ body {
 }
 
 .hero-title {
-  font-size: 100px;
-  font-weight: 700;
-  color: #000;
-  text-align: left;
-  line-height: 1.4;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  flex-wrap: wrap;
 }
 
 .hanja {
+  position: relative;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 8px; /* 한자 간 간격 */
+  justify-content: center;
+  gap: 0.4rem;
+
+  padding: 1rem 1.2rem;
+  border-radius: 20px;
+
+  /* 유리 질감 */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    0 8px 25px rgba(0, 0, 0, 0.4);
+
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 800;
+  font-size: 4.8rem;
+  text-align: center;
+  letter-spacing: 0.05em;
+  overflow: hidden;
+  /* 빛줄기 부분 잘라내기 */
+}
+
+.hanja-meaning {
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.9);
+
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+}
+
+/* 살짝 반짝이는 글래스 효과 (선택 사항) */
+.hanja:hover,
+.hanja-meaning:hover {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  transition: all 0.3s ease;
+}
+
+.hanja-meaning:hover {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
 }
 
 .hanja::first-line,
-.hanja > :not(.hanja-meaning) {
+.hanja> :not(.hanja-meaning) {
   font-size: 48px;
   color: #000;
 }
 
-.hanja-meaning {
-  font-size: 18px; /* 크기 줄이기 */
-  color: #939598; /* 요청한 색상 적용 */
-  margin-top: 2px; /* 한자와의 간격 */
-  display: block; /* 아래쪽에 줄바꿈 형태로 정렬 */
-  text-align: center;
+.hanja::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%);
+  transform: skewX(-20deg);
+  animation: shine 3.5s infinite;
+  pointer-events: none;
 }
 
-@keyframes pulse {
+@keyframes shine {
   0% {
-    opacity: 1;
+    left: -75%;
   }
 
-  50% {
-    opacity: 0.5;
+  60% {
+    left: 125%;
   }
 
   100% {
-    opacity: 1;
+    left: 125%;
   }
 }
 
@@ -415,7 +474,7 @@ body {
 .detail-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #1a1a1a;
+  color: #fafafa  ;
   margin-bottom: 1.5rem;
   line-height: 1.2;
 }
@@ -538,6 +597,7 @@ body {
 }
 
 @media (max-width: 480px) {
+
   .nav-container,
   .hero-container,
   .portfolio-container,
@@ -547,7 +607,11 @@ body {
   }
 
   .hero {
-    padding: 6rem 0 2rem;
+    background: radial-gradient(circle at center, #101010, #000000);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .portfolio,
